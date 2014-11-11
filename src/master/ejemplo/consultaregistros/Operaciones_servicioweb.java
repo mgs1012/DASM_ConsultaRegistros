@@ -105,7 +105,7 @@ public class Operaciones_servicioweb extends Activity {
 		protected String doInBackground(JSONObject... params) {
 			//JSONParser jParser = new JSONParser();
 	        // Getting JSON from URL
-	        JSONObject json = jParser.getJSONFromUrl(url);
+	        /*JSONObject json = jParser.getJSONFromUrl(url);
 	        return json;
 	        
 			String respuesta = getString(R.string.sin_respuesta);
@@ -124,7 +124,7 @@ public class Operaciones_servicioweb extends Activity {
 			} catch (Exception e) {
 				Log.e("WebService", e.toString());
 			}
-			//return respuesta;
+			//return respuesta;*/return null;
 		}
 
 	}
