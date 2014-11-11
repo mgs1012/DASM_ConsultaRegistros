@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ConsultaRegistros</string>
+    <string name="op_sweb">Operaciones Servicio Web</string>
+    <string name="name_dni">D.N.I. : </string>
+    <string name="progress_title">Conectando con la BD</string>
+    <string name="sin_respuesta">No hay respuesta</string>
+    <string name="conectar">conectar</string>
+    <string name="consulta">Consulta de Registros</string>
+    <string name="nom">Nombre :</string>
+    <string name="apellidos">Apellidos :</string>
+    <string name="dir">Dirección :</string>
+    <string name="telf">Teléfono :</string>
+    <string name="equipo">Equipo :</string>
+
+</resources>
