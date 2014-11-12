@@ -1,5 +1,7 @@
 package master.ejemplo.consultaregistros;
 
+import java.util.ArrayList;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.util.EntityUtils;
@@ -22,6 +24,10 @@ import android.widget.Toast;
 
 public class Operaciones_servicioweb extends Activity {
 
+	protected static final String NUMREG = "NUMREG";
+	JSONArray datos ;
+	
+	Intent i1, i2;
 	EditText dni;
 
 	@Override
@@ -32,20 +38,24 @@ public class Operaciones_servicioweb extends Activity {
 		dni = (EditText) findViewById(R.id.input_dni);
 	}
 
-	public void conectar() {
+	public void conectar(View v) {
 		new ConsultaBD().execute(dni.getText().toString());
 	}
-
-	public void consulta(View v) {
+	
+	public void consultar(View v){
 		new ConsultaBD().execute(dni.getText().toString());
-
-		Intent intent1 = new Intent(this, ConsultaRegistros.class);
-		intent1.putExtra("dni", dni.getText().toString());
-		startActivity(intent1);
-		
+	}
+	public void insertarRegistro(View v){
+		String dni_in = dni.toString();
+		new ConsultaBD().execute(dni.getText().toString());
+		i2 = new Intent(getApplicationContext(), InsercionRegistro.class);
+		i2.putExtra("DNI_USUARIO", dni_in);
+		startActivity(i2);
+				
 	}
 
-	private class ConsultaBD extends AsyncTask<JSONObject, Void, String> {
+
+	private class ConsultaBD extends AsyncTask<String, Void, String> {
 
 		private ProgressDialog pDialog;
 
@@ -66,12 +76,7 @@ public class Operaciones_servicioweb extends Activity {
 
 		// Ocurre en segundo plano
 		@Override
-		protected JSONObject doInBackground(String... args) {
-			
-			JSONParser jParser = new JSONParser();
-	        // Getting JSON from URL
-	        JSONObject json = jParser.getJSONFromUrl(url);
-	        return json;
+		protected String doInBackground(String... args) {
 	        
 			String respuesta = getString(R.string.sin_respuesta);
 			String url_final = URL;
@@ -89,44 +94,22 @@ public class Operaciones_servicioweb extends Activity {
 			} catch (Exception e) {
 				Log.e("WebService", e.toString());
 			}
-			//return respuesta;
+			return respuesta;
+
+		 
 		}
 
 		// En el hilo de ejecución
 		@Override
 		protected void onPostExecute(String respuesta) {
 			pDialog.dismiss();
-			Toast.makeText(getBaseContext(), respuesta, Toast.LENGTH_SHORT)
-					.show();
+
+			i1 = new Intent(getApplicationContext(), ConsultaRegistros.class);
+			i1.putExtra("respuesta", respuesta);
+			startActivity(i1);
+			//Toast.makeText(getBaseContext(), respuesta, Toast.LENGTH_SHORT).show();	 
+	
+		}
 			
-		}
-
-		@Override
-		protected String doInBackground(JSONObject... params) {
-			//JSONParser jParser = new JSONParser();
-	        // Getting JSON from URL
-	        /*JSONObject json = jParser.getJSONFromUrl(url);
-	        return json;
-	        
-			String respuesta = getString(R.string.sin_respuesta);
-			String url_final = URL;
-			if (!args[0].equals("")) {
-				url_final += "/" + args[0];
-			}
-			try {
-				AndroidHttpClient httpClient = AndroidHttpClient
-						.newInstance("AndroidHttpClient");
-				HttpGet httpget = new HttpGet(url_final);
-
-				HttpResponse response = httpClient.execute(httpget);
-				respuesta = EntityUtils.toString(response.getEntity());
-				httpClient.close();
-			} catch (Exception e) {
-				Log.e("WebService", e.toString());
-			}
-			//return respuesta;*/return null;
-		}
-
-	}
-
+}
 }

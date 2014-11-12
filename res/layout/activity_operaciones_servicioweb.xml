@@ -56,7 +56,7 @@
             android:layout_below="@+id/textView1"
             android:layout_marginTop="19dp"
             android:layout_toRightOf="@+id/textView1"
-            android:onClick="@string/consulta"
+            android:onClick="@string/conectar"
             android:src="@android:drawable/ic_menu_search" />
 
         <ImageButton
@@ -73,6 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/imageButton1"
             android:layout_toRightOf="@+id/imageButton1"
+            android:onClick="@string/insertarRegistro"
             android:src="@android:drawable/ic_menu_add" />
 
         <ImageButton

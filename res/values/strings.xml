@@ -13,5 +13,8 @@
     <string name="dir">Dirección :</string>
     <string name="telf">Teléfono :</string>
     <string name="equipo">Equipo :</string>
+    <string name="insertarRegistro">insertarRegistro</string>
+    <string name="siguiente">siguiente</string>
+    <string name="anterior">anterior</string>
 
 </resources>
