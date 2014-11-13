@@ -1,7 +1,5 @@
 package master.ejemplo.consultaregistros;
 
-import java.util.ArrayList;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.util.EntityUtils;
@@ -19,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,6 +28,9 @@ public class Operaciones_servicioweb extends Activity {
 	
 	Intent i1, i2;
 	EditText dni;
+	
+	boolean vacio = false;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,17 +45,25 @@ public class Operaciones_servicioweb extends Activity {
 	}
 	
 	public void consultar(View v){
+		Log.d("Practicas", dni.getText().toString());
+		if(dni.getText().toString().equals("")){
+			Toast.makeText(getApplicationContext(), "Vacio. Nueva consulta.", Toast.LENGTH_SHORT).show();
+			vacio = true;
+			new ConsultaBD().execute(dni.getText().toString());
+		}
+		else{
+		vacio = false;
 		new ConsultaBD().execute(dni.getText().toString());
+		}
 	}
-	public void insertarRegistro(View v){
+/*	public void insertarRegistro(View v){
 		String dni_in = dni.toString();
 		new ConsultaBD().execute(dni.getText().toString());
 		i2 = new Intent(getApplicationContext(), InsercionRegistro.class);
 		i2.putExtra("DNI_USUARIO", dni_in);
 		startActivity(i2);
 				
-	}
-
+	}*/
 
 	private class ConsultaBD extends AsyncTask<String, Void, String> {
 
@@ -103,11 +113,25 @@ public class Operaciones_servicioweb extends Activity {
 		@Override
 		protected void onPostExecute(String respuesta) {
 			pDialog.dismiss();
-
-			i1 = new Intent(getApplicationContext(), ConsultaRegistros.class);
-			i1.putExtra("respuesta", respuesta);
-			startActivity(i1);
-			//Toast.makeText(getBaseContext(), respuesta, Toast.LENGTH_SHORT).show();	 
+			JSONArray array;
+			int p;
+			String msg = "Registro no existente !";
+			try {
+				array = new JSONArray(respuesta);
+				p = array.getJSONObject(0).getInt("NUMREG");
+				if( p == 0){
+					Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+				}
+				else {
+					i1 = new Intent(getApplicationContext(), ConsultaRegistros.class);
+					i1.putExtra("respuesta", respuesta);
+					i1.putExtra("VACIO", vacio);
+					//Toast.makeText(getBaseContext(), respuesta, Toast.LENGTH_SHORT).show();	 
+					startActivity(i1);
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			} 	
 	
 		}
 			

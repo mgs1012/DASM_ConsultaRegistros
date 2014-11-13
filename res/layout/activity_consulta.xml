@@ -17,6 +17,37 @@
         android:textSize="22sp"
         android:textStyle="bold" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/numero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="num"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#F5FFFA" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/numregDe"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#F5FFFA" />
+
+        <TextView
+            android:id="@+id/numReg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="total"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#F5FFFA" />
+
+    </LinearLayout>
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -161,29 +192,31 @@
         android:gravity="center" >
 
         <ImageButton
-            android:id="@+id/imageButton1"
+            android:id="@+id/btnPrimero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="irPrimero"
             android:src="@android:drawable/ic_media_previous" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/btnAnterior"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="anterior"
             android:src="@android:drawable/ic_media_rew" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/btnSiguiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="siguiente"
             android:src="@android:drawable/ic_media_ff" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/btnUltimo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="irUltimo"
             android:src="@android:drawable/ic_media_next" />
 
     </LinearLayout>

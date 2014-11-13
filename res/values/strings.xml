@@ -16,5 +16,9 @@
     <string name="insertarRegistro">insertarRegistro</string>
     <string name="siguiente">siguiente</string>
     <string name="anterior">anterior</string>
+    <string name="numreg">Registro </string>
+    <string name="numregDe">de : </string>
+    <string name="numReg"></string>
+    <string name="num"></string>
 
 </resources>

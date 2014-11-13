@@ -41,7 +41,7 @@
             android:id="@+id/input_dni"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/imageButton1"
+            android:layout_alignLeft="@+id/btnPrimero"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_weight="1"
@@ -50,38 +50,38 @@
             android:inputType="number" />
 
         <ImageButton
-            android:id="@+id/imageButton1"
+            android:id="@+id/btnPrimero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView1"
             android:layout_marginTop="19dp"
             android:layout_toRightOf="@+id/textView1"
-            android:onClick="@string/conectar"
+            android:onClick="consultar"
             android:src="@android:drawable/ic_menu_search" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/btnSiguiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/imageButton2"
-            android:layout_toRightOf="@+id/imageButton2"
+            android:layout_alignTop="@+id/btnAnterior"
+            android:layout_toRightOf="@+id/btnAnterior"
             android:src="@android:drawable/ic_menu_edit" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/btnAnterior"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/imageButton1"
-            android:layout_toRightOf="@+id/imageButton1"
+            android:layout_alignTop="@+id/btnPrimero"
+            android:layout_toRightOf="@+id/btnPrimero"
             android:onClick="@string/insertarRegistro"
             android:src="@android:drawable/ic_menu_add" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/btnUltimo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/imageButton3"
-            android:layout_toRightOf="@+id/imageButton3"
+            android:layout_alignTop="@+id/btnSiguiente"
+            android:layout_toRightOf="@+id/btnSiguiente"
             android:src="@android:drawable/ic_menu_delete" />
     </RelativeLayout>
 
